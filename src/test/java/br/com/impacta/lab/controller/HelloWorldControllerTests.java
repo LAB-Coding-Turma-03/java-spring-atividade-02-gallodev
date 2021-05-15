@@ -51,5 +51,18 @@ public class HelloWorldControllerTests {
 		assertEquals("Hello world TESTE !".toUpperCase(), response.toUpperCase());
 		
 	}
+
+	@Test
+	public void a3_helloWorldTest() throws Exception {
+		RequestBuilder request = get("/atividades/hello").queryParam("nome", "Christian")
+					.accept(MediaType.TEXT_PLAIN);
+		
+		MvcResult result = mvc.perform(request).andExpect(status().isOk()).andReturn();
+		
+		String response = result.getResponse().getContentAsString();
+		
+		assertEquals("Hello world Christian !".toUpperCase(), response.toUpperCase());
+		
+	}
 	
 }
